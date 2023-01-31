@@ -45,11 +45,6 @@ namespace cinema_sofa
                 currentOrderPrice += ticketPrice;
             }
 
-            if (_tickets.Count >= 6)
-            {
-                currentOrderPrice = currentOrderPrice * 0.9;
-            }
-
             return currentOrderPrice;
         }
 
