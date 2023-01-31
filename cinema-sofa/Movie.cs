@@ -3,22 +3,23 @@ namespace cinema_sofa
 {
     public class Movie
     {
+        private List<MovieScreening> _screenings;
         private string _title;
 
         public Movie(string title)
         {
+            _screenings = new List<MovieScreening>();
             _title = title;
         }
 
         public void AddScreening(MovieScreening screening)
         {
-            // TODO: Implement
+            _screenings.Add(screening);
         }
 
         public override string ToString()
         {
-            // TODO: Implement
-            return "";
+            return $"{_title}";
         }
     }
 }
