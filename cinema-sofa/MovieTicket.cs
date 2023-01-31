@@ -21,21 +21,24 @@ namespace cinema_sofa
             _seatNr = SeatNr;
         }
 
-        public bool isPremiumTicket()
+        public bool IsPremiumTicket()
         {
             return _isPremium;
         }
 
-        public double getPrice()
+        public double GetPrice()
         {
-            // TODO: Implement
-            return 0.0;
+            return _movieScreening.PetPricePerSeat();
+        }
+
+        public DateTime GetScreeningDateAndTime()
+        {
+            return _movieScreening.DateAndTime();
         }
 
         public override string ToString()
         {
-            // TODO: Implement
-            return "";
+            return $"Movie: {_movieScreening.GetMovieTitle()}{Environment.NewLine}Screening: {GetScreeningDateAndTime()}{Environment.NewLine}Premium: {(IsPremiumTicket() ? "Yes" : "No")}{Environment.NewLine}Price: {GetPrice()}";
         }
     }
 }

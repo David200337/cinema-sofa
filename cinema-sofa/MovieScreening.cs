@@ -14,8 +14,8 @@ namespace cinema_sofa
             _pricePerSeat = pricePerSeat;
         }
 
-        public string Movie() {
-            return _movie.ToString();
+        public string GetMovieTitle() {
+            return _movie.GetTitle();
         }
 
         public DateTime DateAndTime()
