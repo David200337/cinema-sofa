@@ -14,16 +14,19 @@ namespace cinema_sofa
             _pricePerSeat = pricePerSeat;
         }
 
+        public DateTime DateAndTime()
+        {
+            return _dateAndTime;
+        }
+
         public double PetPricePerSeat()
         {
-            // TODO: Implement
-            return 0.0;
+            return _pricePerSeat;
         }
 
         public override string ToString()
         {
-            // TODO: Implement
-            return "";
+            return $"Movie: {_movie.ToString()}{Environment.NewLine}Price per seat: {_pricePerSeat}{Environment.NewLine}Screening date and time: {_dateAndTime.ToLocalTime().ToShortDateString()}";
         }
     }
 }
