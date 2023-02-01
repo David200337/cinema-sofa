@@ -1,10 +1,15 @@
-﻿using System;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
+
 namespace cinema_sofa
 {
     public class Order
     {
-        private List<MovieTicket> _tickets;
-        private int _orderNr;
+        [JsonInclude, JsonPropertyName("Tickets")]
+        public List<MovieTicket> _tickets { get; private set; }
+
+        [JsonInclude, JsonPropertyName("OderNr")]
+        public int _orderNr { get; private set; }
 
         public Order(int orderNr, bool isStudentOrder)
         {
@@ -50,7 +55,22 @@ namespace cinema_sofa
 
         public void Export(TicketExportFormat exportFormat)
         {
-            // TODO: Implement
+
+            var fileName = "Order";
+            var extension = "";
+            var jsonString = JsonSerializer.Serialize(this);
+
+            switch (exportFormat)
+            {
+                case TicketExportFormat.PLAINTEXT:
+                    extension = "txt";
+                    break;
+                case TicketExportFormat.JSON:
+                    extension = "json";
+                    break;
+            }
+
+            File.WriteAllText($"{fileName}.{extension}", jsonString);
         }
     }
 }

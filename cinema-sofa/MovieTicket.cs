@@ -1,13 +1,24 @@
 ﻿using System;
+using System.Text.Json.Serialization;
+
 namespace cinema_sofa
 {
     public class MovieTicket
     {
-        private MovieScreening _movieScreening;
-        private int _rowNr;
-        private int _seatNr;
-        private bool _isPremium;
-        private bool _isStudent;
+        [JsonInclude, JsonPropertyName("MovieScreening")]
+        public MovieScreening _movieScreening { get; private set; }
+
+        [JsonInclude, JsonPropertyName("RowNr")]
+        public int _rowNr { get; private set; }
+
+        [JsonInclude, JsonPropertyName("SeatNr")]
+        public int _seatNr { get; private set; }
+
+        [JsonInclude, JsonPropertyName("PremiumTicket")]
+        public bool _isPremium { get; private set; }
+
+        [JsonInclude, JsonPropertyName("StudentTicket")]
+        public bool _isStudent { get; private set; }
 
         public MovieTicket(
             MovieScreening movieScreening,
@@ -29,14 +40,15 @@ namespace cinema_sofa
             return _isPremium;
         }
 
-        public bool IsStudentTicket() {
+        public bool IsStudentTicket()
+        {
             return _isStudent;
         }
 
         public double GetPrice()
         {
             Double price = _movieScreening.PetPricePerSeat();
-            if (_isPremium) 
+            if (_isPremium)
             {
                 if (_isStudent) price += 2;
                 else price += 3;

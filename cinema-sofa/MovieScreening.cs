@@ -1,11 +1,18 @@
 ﻿using System;
+using System.Text.Json.Serialization;
+
 namespace cinema_sofa
 {
     public class MovieScreening
     {
-        private Movie _movie;
-        private DateTime _dateAndTime;
-        private double _pricePerSeat;
+        [JsonInclude, JsonPropertyName("Movie")]
+        public Movie _movie { get; private set; }
+
+        [JsonInclude, JsonPropertyName("DateAndTime")]
+        public DateTime _dateAndTime { get; private set; }
+
+        [JsonInclude, JsonPropertyName("PricePerSeat")]
+        public double _pricePerSeat { get; private set; }
 
         public MovieScreening(Movie movie, DateTime dateAndTime, double pricePerSeat)
         {
@@ -14,7 +21,8 @@ namespace cinema_sofa
             _pricePerSeat = pricePerSeat;
         }
 
-        public string GetMovieTitle() {
+        public string GetMovieTitle()
+        {
             return _movie.GetTitle();
         }
 
