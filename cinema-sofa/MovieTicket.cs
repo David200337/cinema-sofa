@@ -48,12 +48,10 @@ namespace cinema_sofa
         public double GetPrice()
         {
             Double price = _movieScreening.PetPricePerSeat();
-            if (_isPremium)
-            {
-                if (_isStudent) price += 2;
-                else price += 3;
-            }
-            return price;
+            if (!_isPremium) return price;
+
+            if (_isStudent) return price += 2;
+            else return price += 3;
         }
 
         public DateTime GetScreeningDateAndTime()
