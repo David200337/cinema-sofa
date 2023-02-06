@@ -27,7 +27,7 @@ namespace Cinema
 
         public override string ToString()
         {
-            return $"{_title}";
+            return $"Title: {_title}";
         }
     }
 }
