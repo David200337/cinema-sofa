@@ -1,4 +1,4 @@
-﻿namespace cinema_sofa
+﻿namespace Cinema
 {
     public class Program
     {

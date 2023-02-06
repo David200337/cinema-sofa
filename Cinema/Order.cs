@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace cinema_sofa
+namespace Cinema
 {
     public class Order
     {
@@ -43,7 +43,7 @@ namespace cinema_sofa
                 bool isSecondTicket = (i + 1) % 2 == 0;
 
                 // The second ticket is free when it is a weekday,
-                // or the ticket is a student ticket.
+                // or when the ticket is a student ticket.
                 if (isSecondTicket && (isWeekDay || isStudentTicket))
                 {
                     ticketPrice = 0;
@@ -65,7 +65,6 @@ namespace cinema_sofa
 
         public void Export(TicketExportFormat exportFormat)
         {
-
             var fileName = "Order";
             var extension = "";
             var jsonString = JsonSerializer.Serialize(this);

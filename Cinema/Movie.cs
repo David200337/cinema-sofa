@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace cinema_sofa
+namespace Cinema
 {
     public class Movie
     {
