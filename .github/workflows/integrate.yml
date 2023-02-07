@@ -8,7 +8,7 @@ on:
       - main
 jobs:
   build:
-    name: "Build and analyze solution"
+    name: "Build solution"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository
@@ -22,8 +22,9 @@ jobs:
       - name: Build solution
         run: dotnet build --configuration Release
 
-  analyze:
-    name: Analyze with SonarCloud
+analyze:
+  build:
+    name: "Analyze solution"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository
