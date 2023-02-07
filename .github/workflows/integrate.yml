@@ -22,8 +22,7 @@ jobs:
       - name: Build solution
         run: dotnet build --configuration Release
 
-analyze:
-  build:
+  analyze:
     name: "Analyze solution"
     runs-on: ubuntu-latest
     steps:
