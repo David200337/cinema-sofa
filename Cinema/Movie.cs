@@ -4,7 +4,7 @@ namespace Cinema
 {
     public class Movie
     {
-        private List<MovieScreening> _screenings;
+        private readonly List<MovieScreening> _screenings;
 
         [JsonInclude, JsonPropertyName("Title")]
         public string _title { get; private set; }
