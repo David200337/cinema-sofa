@@ -17,11 +17,6 @@ namespace Cinema
             _orderNr = orderNr;
         }
 
-        public int GetOrderNr()
-        {
-            return _orderNr;
-        }
-
         public void AddSeatReservation(MovieTicket ticket)
         {
             _tickets.Add(ticket);

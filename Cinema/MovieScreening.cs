@@ -23,17 +23,7 @@ namespace Cinema
 
         public string GetMovieTitle()
         {
-            return _movie.GetTitle();
-        }
-
-        public DateTime DateAndTime()
-        {
-            return _dateAndTime;
-        }
-
-        public double PetPricePerSeat()
-        {
-            return _pricePerSeat;
+            return _movie._title;
         }
 
         public override string ToString()

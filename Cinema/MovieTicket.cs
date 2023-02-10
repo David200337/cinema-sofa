@@ -47,7 +47,7 @@ namespace Cinema
 
         public double GetPrice()
         {
-            double price = _movieScreening.PetPricePerSeat();
+            double price = _movieScreening._pricePerSeat;
             // Return the regular price if the ticket is not a premium ticket.
             if (!_isPremium) return price;
 
@@ -60,7 +60,7 @@ namespace Cinema
 
         public DateTime GetScreeningDateAndTime()
         {
-            return _movieScreening.DateAndTime();
+            return _movieScreening._dateAndTime;
         }
 
         public override string ToString()

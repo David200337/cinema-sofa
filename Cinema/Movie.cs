@@ -20,11 +20,6 @@ namespace Cinema
             _screenings.Add(screening);
         }
 
-        public string GetTitle()
-        {
-            return _title;
-        }
-
         public override string ToString()
         {
             return $"Title: {_title}";
