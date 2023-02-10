@@ -1,10 +1,10 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace cinema_sofa
+namespace Cinema
 {
     public class Movie
     {
-        private List<MovieScreening> _screenings;
+        private readonly List<MovieScreening> _screenings;
 
         [JsonInclude, JsonPropertyName("Title")]
         public string _title { get; private set; }
@@ -20,14 +20,9 @@ namespace cinema_sofa
             _screenings.Add(screening);
         }
 
-        public string GetTitle()
-        {
-            return _title;
-        }
-
         public override string ToString()
         {
-            return $"{_title}";
+            return $"Title: {_title}";
         }
     }
 }

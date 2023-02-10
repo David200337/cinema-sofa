@@ -1,5 +1,5 @@
 ﻿using System;
-namespace cinema_sofa
+namespace Cinema
 {
     public enum TicketExportFormat
     {

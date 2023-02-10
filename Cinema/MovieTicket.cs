@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.Json.Serialization;
 
-namespace cinema_sofa
+namespace Cinema
 {
     public class MovieTicket
     {
@@ -47,16 +47,20 @@ namespace cinema_sofa
 
         public double GetPrice()
         {
-            Double price = _movieScreening.PetPricePerSeat();
+            double price = _movieScreening._pricePerSeat;
+            // Return the regular price if the ticket is not a premium ticket.
             if (!_isPremium) return price;
 
-            if (_isStudent) return price += 2;
-            else return price += 3;
+            // Return the premium ticket price if the ticket is a premium ticket.
+            // For students this adds another €2,- to the regular price,
+            // for non-students the added fee is €3,-. 
+            if (_isStudent) return price + 2;
+            return price + 3;
         }
 
         public DateTime GetScreeningDateAndTime()
         {
-            return _movieScreening.DateAndTime();
+            return _movieScreening._dateAndTime;
         }
 
         public override string ToString()

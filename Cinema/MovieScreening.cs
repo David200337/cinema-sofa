@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.Json.Serialization;
 
-namespace cinema_sofa
+namespace Cinema
 {
     public class MovieScreening
     {
@@ -23,17 +23,7 @@ namespace cinema_sofa
 
         public string GetMovieTitle()
         {
-            return _movie.GetTitle();
-        }
-
-        public DateTime DateAndTime()
-        {
-            return _dateAndTime;
-        }
-
-        public double PetPricePerSeat()
-        {
-            return _pricePerSeat;
+            return _movie._title;
         }
 
         public override string ToString()

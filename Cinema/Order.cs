@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace cinema_sofa
+namespace Cinema
 {
     public class Order
     {
@@ -17,11 +17,6 @@ namespace cinema_sofa
             _orderNr = orderNr;
         }
 
-        public int GetOrderNr()
-        {
-            return _orderNr;
-        }
-
         public void AddSeatReservation(MovieTicket ticket)
         {
             _tickets.Add(ticket);
@@ -29,33 +24,42 @@ namespace cinema_sofa
 
         public double CalculatePrice()
         {
-            Double currentOrderPrice = 0;
+            double totalOrderPice = 0;
 
             // Using a for loop to track the index of a C# list. Foreach doesn't support this feature, nor does a map() function exist as in Typescript.
             for (int i = 0; i < _tickets.Count; i++)
             {
                 MovieTicket ticket = _tickets[i];
-                Double ticketPrice = ticket.GetPrice();
+                DateTime ticketDate = ticket.GetScreeningDateAndTime();
+                double ticketPrice = ticket.GetPrice();
 
-                if (((i + 1) % 2 == 0) && (((int)ticket.GetScreeningDateAndTime().DayOfWeek < 5 && (int)ticket.GetScreeningDateAndTime().DayOfWeek > 0) || ticket.IsStudentTicket()))
+                bool isWeekDay = ticketDate.DayOfWeek >= DayOfWeek.Monday && ticketDate.DayOfWeek <= DayOfWeek.Thursday;
+                bool isStudentTicket = ticket.IsStudentTicket();
+                bool isSecondTicket = (i + 1) % 2 == 0;
+
+                // The second ticket is free when it is a weekday,
+                // or when the ticket is a student ticket.
+                if (isSecondTicket && (isWeekDay || isStudentTicket))
                 {
                     ticketPrice = 0;
                 }
 
-                if (!ticket.IsStudentTicket() && ((int)ticket.GetScreeningDateAndTime().DayOfWeek > 4 || (int)ticket.GetScreeningDateAndTime().DayOfWeek == 0) && _tickets.Count >= 6)
+                // Additionally, a 10% discount is provided during the weekend when
+                // the ticket is not a student ticket and the order consists of 6 or more orders.
+                if (!isStudentTicket && !isWeekDay && _tickets.Count >= 6)
                 {
-                    ticketPrice = ticketPrice * 0.9;
+                    ticketPrice *= 0.9;
                 }
 
-                currentOrderPrice += ticketPrice;
+                // Add the calculated ticket price to the total order price.
+                totalOrderPice += ticketPrice;
             }
 
-            return currentOrderPrice;
+            return totalOrderPice;
         }
 
         public void Export(TicketExportFormat exportFormat)
         {
-
             var fileName = "Order";
             var extension = "";
             var jsonString = JsonSerializer.Serialize(this);
