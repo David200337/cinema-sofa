@@ -14,7 +14,7 @@
 
             order.AddSeatReservation(ticket);
 
-            order.Export(TicketExportFormat.JSON);
+            order.Export(new JsonExport());
         }
     }
 }
