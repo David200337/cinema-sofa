@@ -1,8 +1,8 @@
 ﻿using System;
 namespace Cinema
 {
-    public interface TicketType
+    public interface ITicketType
     {
-        public double GetPrice(VisitorType visitorType);
+        public double GetPrice(IVisitorType visitorType);
     }
 }

@@ -58,7 +58,7 @@ namespace Cinema
             return totalOrderPice;
         }
 
-        public void Export(ExportType exportType)
+        public void Export(IExportType exportType)
         {
             exportType.Export<Order>(this);
         }

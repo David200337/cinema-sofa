@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Cinema
 {
-    public class StudentVisitor : VisitorType
+    public class StudentVisitor : IVisitorType
     {
     }
 }

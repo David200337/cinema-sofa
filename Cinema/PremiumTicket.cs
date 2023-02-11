@@ -3,9 +3,9 @@ using System.Diagnostics;
 
 namespace Cinema
 {
-    public class PremiumTicket : TicketType
+    public class PremiumTicket : ITicketType
     {
-        public double GetPrice(VisitorType visitorType)
+        public double GetPrice(IVisitorType visitorType)
         {
             // Return the added premium price if the ticket is a premium ticket.
             // For students this adds another €2,- to the regular price,

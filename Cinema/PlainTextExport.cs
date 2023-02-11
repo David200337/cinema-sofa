@@ -3,7 +3,7 @@ using System.Text.Json;
 
 namespace Cinema
 {
-    public class PlainTextExport : ExportType
+    public class PlainTextExport : IExportType
     {
         public void Export<T>(T obj)
         {

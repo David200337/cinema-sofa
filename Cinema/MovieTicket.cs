@@ -14,17 +14,17 @@ namespace Cinema
         [JsonInclude, JsonPropertyName("SeatNr")]
         public int _seatNr { get; private set; }
 
-        public TicketType _ticketType { get; private set; }
+        public ITicketType _ticketType { get; private set; }
 
-        public VisitorType _visitorType { get; private set; }
+        public IVisitorType _visitorType { get; private set; }
 
 
         public MovieTicket(
             MovieScreening movieScreening,
             int seatRow,
             int seatNr,
-            TicketType ticketType,
-            VisitorType visitorType
+            ITicketType ticketType,
+            IVisitorType visitorType
         )
         {
             _movieScreening = movieScreening;

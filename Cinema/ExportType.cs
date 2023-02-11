@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Cinema
 {
-    public interface ExportType
+    public interface IExportType
     {
         public void Export<T>(T obj);
     }
