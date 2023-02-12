@@ -14,48 +14,41 @@ namespace Cinema
         [JsonInclude, JsonPropertyName("SeatNr")]
         public int _seatNr { get; private set; }
 
-        [JsonInclude, JsonPropertyName("PremiumTicket")]
-        public bool _isPremium { get; private set; }
+        public ITicketType _ticketType { get; private set; }
 
-        [JsonInclude, JsonPropertyName("StudentTicket")]
-        public bool _isStudent { get; private set; }
+        public IVisitorType _visitorType { get; private set; }
+
 
         public MovieTicket(
             MovieScreening movieScreening,
-            bool isPremiumReservation,
             int seatRow,
             int seatNr,
-            bool isStudent
+            ITicketType ticketType,
+            IVisitorType visitorType
         )
         {
             _movieScreening = movieScreening;
-            _isPremium = isPremiumReservation;
-            _isStudent = isStudent;
             _rowNr = seatRow;
             _seatNr = seatNr;
+            _ticketType = ticketType;
+            _visitorType = visitorType;
         }
 
         public bool IsPremiumTicket()
         {
-            return _isPremium;
+            return _ticketType is PremiumTicket;
         }
 
         public bool IsStudentTicket()
         {
-            return _isStudent;
+            return _visitorType is StudentVisitor;
         }
 
         public double GetPrice()
         {
             double price = _movieScreening._pricePerSeat;
-            // Return the regular price if the ticket is not a premium ticket.
-            if (!_isPremium) return price;
 
-            // Return the premium ticket price if the ticket is a premium ticket.
-            // For students this adds another €2,- to the regular price,
-            // for non-students the added fee is €3,-. 
-            if (_isStudent) return price + 2;
-            return price + 3;
+            return price + _ticketType.GetPrice(_visitorType);
         }
 
         public DateTime GetScreeningDateAndTime()

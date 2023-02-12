@@ -24,7 +24,10 @@ public class OrderTests
         Order order = new(1, isStudentTicket);
         for (int i = 0; i < amountOfTickets; i++)
         {
-            order.AddSeatReservation(new MovieTicket(movieScreening, isPremiumTicket, i, i, isStudentTicket));
+            ITicketType ticketType = isPremiumTicket ? new PremiumTicket() : new RegularTicket();
+            IVisitorType visitorType = isStudentTicket ? new StudentVisitor() : new RegularVisitor();
+
+            order.AddSeatReservation(new MovieTicket(movieScreening, i, i, ticketType, visitorType));
         }
 
         // Act

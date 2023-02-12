@@ -58,23 +58,9 @@ namespace Cinema
             return totalOrderPice;
         }
 
-        public void Export(TicketExportFormat exportFormat)
+        public void Export(IExportType exportType)
         {
-            var fileName = "Order";
-            var extension = "";
-            var jsonString = JsonSerializer.Serialize(this);
-
-            switch (exportFormat)
-            {
-                case TicketExportFormat.PLAINTEXT:
-                    extension = "txt";
-                    break;
-                case TicketExportFormat.JSON:
-                    extension = "json";
-                    break;
-            }
-
-            File.WriteAllText($"{fileName}.{extension}", jsonString);
+            exportType.Export<Order>(this);
         }
     }
 }
