@@ -11,10 +11,49 @@ namespace Cinema
         [JsonInclude, JsonPropertyName("OderNr")]
         public int _orderNr { get; private set; }
 
+        public IOrderState _orderUnsubmittedState { get; private set; }
+        public IOrderState _orderSubmittedState { get; private set; }
+        public IOrderState _orderProvisionalState { get; private set; }
+        public IOrderState _orderPaidState { get; private set; }
+        public IOrderState _orderCancelledState { get; private set; }
+
+        public IOrderState _state { get; private set; }
+
         public Order(int orderNr, bool isStudentOrder)
         {
             _tickets = new List<MovieTicket>();
             _orderNr = orderNr;
+            _orderUnsubmittedState = new OrderUnsubmittedState(this);
+            _orderSubmittedState = new OrderSubmittedState(this);
+            _orderProvisionalState = new OrderProvisionalState(this);
+            _orderPaidState = new OrderPaidState(this);
+            _orderCancelledState = new OrderCancelledState(this);
+            _state = _orderUnsubmittedState;
+        }
+
+        public void SubmitOrder()
+        {
+            _state.SubmitOrder();
+        }
+
+        public void EditOrder(MovieTicket ticket)
+        {
+            _state.EditOrder(ticket);
+        }
+
+        public void PayOrder()
+        {
+            _state.PayOrder();
+        }
+
+        public void CancelOrder()
+        {
+            _state.CancelOrder();
+        }
+
+        public void SetState(IOrderState state)
+        {
+            _state = state;
         }
 
         public void AddSeatReservation(MovieTicket ticket)
