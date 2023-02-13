@@ -2,7 +2,7 @@ namespace Cinema
 {
     public class OrderSubmittedState : IOrderState
     {
-        private Order _order;
+        private readonly Order _order;
 
         public OrderSubmittedState(Order order)
         {
@@ -26,7 +26,7 @@ namespace Cinema
 
         public void SubmitOrder()
         {
-            throw new Exception("Order has already been submitted. Can not submit.");
+            throw new InvalidOperationException("Order has already been submitted. Can not submit.");
         }
     }
 }

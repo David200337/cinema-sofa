@@ -53,7 +53,7 @@ public class OrderTests
     }
 
     [TestMethod]
-    [ExpectedException(typeof(Exception),
+    [ExpectedException(typeof(InvalidOperationException),
     "Order has not been submitted.")]
     public void Order_Should_Not_Be_Able_To_Be_Submitted_When_Submitted_State()
     {
@@ -66,7 +66,7 @@ public class OrderTests
     }
 
     [TestMethod]
-    [ExpectedException(typeof(Exception),
+    [ExpectedException(typeof(InvalidOperationException),
     "Order has not been submitted.")]
     public void Order_Should_Not_Be_Able_To_Be_Submitted_When_Provisional_State()
     {
@@ -79,7 +79,7 @@ public class OrderTests
     }
 
     [TestMethod]
-    [ExpectedException(typeof(Exception),
+    [ExpectedException(typeof(InvalidOperationException),
     "Order has not been submitted.")]
     public void Order_Should_Not_Be_Able_To_Be_Submitted_When_Paid_State()
     {
@@ -92,7 +92,7 @@ public class OrderTests
     }
 
     [TestMethod]
-    [ExpectedException(typeof(Exception),
+    [ExpectedException(typeof(InvalidOperationException),
     "Order has not been submitted.")]
     public void Order_Should_Not_Be_Able_To_Be_Submitted_When_Cancelled_State()
     {
@@ -215,7 +215,7 @@ public class OrderTests
     [DataRow(10.00, false, true, true, 6, 30.00)]
     [DataRow(10.00, false, false, true, 6, 54.00)]
     [DataRow(10.00, false, false, false, 3, 20.00)]
-    [ExpectedException(typeof(Exception),"Order has not been paid for.")]
+    [ExpectedException(typeof(InvalidOperationException),"Order has not been paid for.")]
     public void Order_Should_Not_Be_Able_To_Be_Editted_When_Paid_State(double baseTicketPrice, bool isPremiumTicket, bool isStudentTicket, bool isWeekend, int amountOfTickets, double expectedOrderPrice)
     {
         // Arrange
@@ -251,7 +251,7 @@ public class OrderTests
     [DataRow(10.00, false, true, true, 6, 30.00)]
     [DataRow(10.00, false, false, true, 6, 54.00)]
     [DataRow(10.00, false, false, false, 3, 20.00)]
-    [ExpectedException(typeof(Exception), "Order has not been cancelled.")]
+    [ExpectedException(typeof(InvalidOperationException), "Order has not been cancelled.")]
     public void Order_Should_Not_Be_Able_To_Be_Editted_When_Cancelled_State(double baseTicketPrice, bool isPremiumTicket, bool isStudentTicket, bool isWeekend, int amountOfTickets, double expectedOrderPrice)
     {
         // Arrange
@@ -310,7 +310,7 @@ public class OrderTests
     }
 
     [TestMethod]
-    [ExpectedException(typeof(Exception), "Order has been submitted.")]
+    [ExpectedException(typeof(InvalidOperationException), "Order has been submitted.")]
     public void Order_Should_Not_Be_Able_To_Be_Paid_For_When_Unsubmitted_State()
     {
         // Arrange
@@ -325,7 +325,7 @@ public class OrderTests
     }
 
     [TestMethod]
-    [ExpectedException(typeof(Exception), "Order has not been paid for.")]
+    [ExpectedException(typeof(InvalidOperationException), "Order has not been paid for.")]
     public void Order_Should_Not_Be_Able_To_Be_Paid_For_When_Paid_State()
     {
         // Arrange
@@ -340,7 +340,7 @@ public class OrderTests
     }
 
     [TestMethod]
-    [ExpectedException(typeof(Exception), "Order has not been cancelled.")]
+    [ExpectedException(typeof(InvalidOperationException), "Order has not been cancelled.")]
     public void Order_Should_Not_Be_Able_To_Be_Paid_For_When_Cancelled_State()
     {
         // Arrange
@@ -383,7 +383,7 @@ public class OrderTests
     }
 
     [TestMethod]
-    [ExpectedException(typeof(Exception), "Order is submitted.")]
+    [ExpectedException(typeof(InvalidOperationException), "Order is submitted.")]
     public void Order_Should_Not_Be_Able_To_Be_Cancelled_For_When_Unsubmitted_State()
     {
         // Arrange
@@ -397,7 +397,7 @@ public class OrderTests
     }
 
     [TestMethod]
-    [ExpectedException(typeof(Exception), "Order is not paid for.")]
+    [ExpectedException(typeof(InvalidOperationException), "Order is not paid for.")]
     public void Order_Should_Not_Be_Able_To_Be_Cancelled_For_When_Paid_State()
     {
         // Arrange
@@ -412,7 +412,7 @@ public class OrderTests
     }
 
     [TestMethod]
-    [ExpectedException(typeof(Exception), "Order has not been cancelled.")]
+    [ExpectedException(typeof(InvalidOperationException), "Order has not been cancelled.")]
     public void Order_Should_Not_Be_Able_To_Be_Cancelled_For_When_Cancelled_State()
     {
         // Arrange

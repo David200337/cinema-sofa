@@ -1,7 +1,7 @@
 namespace Cinema {
     public class OrderCancelledState : IOrderState
     {
-        private Order _order;
+        private readonly Order _order;
 
         public OrderCancelledState(Order order)
         {
@@ -10,22 +10,22 @@ namespace Cinema {
 
         public void CancelOrder()
         {
-            throw new Exception("Order has already been cancelled.");
+            throw new InvalidOperationException("Order has already been cancelled.");
         }
 
         public void EditOrder(MovieTicket ticket)
         {
-            throw new Exception("Order has been cancelled. Can not edit.");
+            throw new InvalidOperationException("Order has been cancelled. Can not edit.");
         }
 
         public void PayOrder()
         {
-            throw new Exception("Order has been cancelled. Can not pay.");
+            throw new InvalidOperationException("Order has been cancelled. Can not pay.");
         }
 
         public void SubmitOrder()
         {
-            throw new Exception("Order has already been submitted and cancelled.");
+            throw new InvalidOperationException("Order has already been submitted and cancelled.");
         }
     }
 }

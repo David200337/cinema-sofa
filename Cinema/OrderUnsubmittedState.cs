@@ -2,7 +2,7 @@ namespace Cinema
 {
     public class OrderUnsubmittedState : IOrderState
     {
-        private Order _order;
+        private readonly Order _order;
 
         public OrderUnsubmittedState(Order order)
         {
@@ -11,7 +11,7 @@ namespace Cinema
 
         public void CancelOrder()
         {
-            throw new Exception("Order has not been submitted yet.");
+            throw new InvalidOperationException("Order has not been submitted yet.");
         }
 
         public void EditOrder(MovieTicket ticket)
@@ -21,7 +21,7 @@ namespace Cinema
 
         public void PayOrder()
         {
-            throw new Exception("Order has not been submitted yet.");
+            throw new InvalidOperationException("Order has not been submitted yet.");
         }
 
         public void SubmitOrder()
