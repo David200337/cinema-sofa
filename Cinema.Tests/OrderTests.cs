@@ -36,4 +36,16 @@ public class OrderTests
         // Assert
         Assert.AreEqual(expectedOrderPrice, actualOrderPrice, $"The expected total order price of {expectedOrderPrice} does not meet the actual total order price of {actualOrderPrice}.");
     }
+
+    public void Order_Should_Be_Able_To_Be_Submitted() 
+    {  
+        // Arrange
+        Order order = new(1, true);
+
+        // Act
+        order.SubmitOrder();
+
+        // Assert
+        Assert.AreEqual(order._orderSubmittedState, order._state, $"State {order._state} and {order._orderSubmittedState} do not match.");
+    }
 }
