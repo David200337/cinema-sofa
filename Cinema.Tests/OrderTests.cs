@@ -272,7 +272,7 @@ public class OrderTests
 
             order.AddSeatReservation(new MovieTicket(movieScreening, i, i, ticketType, visitorType));
         }
-        order.SetState(order._orderPaidState);
+        order.SetState(order._orderCancelledState);
 
         // Act
         order.EditOrder(new MovieTicket(movieScreening, 7, 7, new PremiumTicket(), new StudentVisitor()));
