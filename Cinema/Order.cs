@@ -36,9 +36,9 @@ namespace Cinema
             _state.SubmitOrder();
         }
 
-        public void EditOrder(Order order)
+        public void EditOrder(MovieTicket ticket)
         {
-            _state.EditOrder(order);
+            _state.EditOrder(ticket);
         }
 
         public void PayOrder()
