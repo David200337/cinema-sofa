@@ -14,9 +14,9 @@ namespace Cinema
             throw new Exception("Order has not been submitted yet.");
         }
 
-        public void EditOrder(Order order)
+        public void EditOrder(MovieTicket ticket)
         {
-            _order = order;
+            _order.AddSeatReservation(ticket);
         }
 
         public void PayOrder()

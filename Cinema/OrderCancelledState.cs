@@ -13,7 +13,7 @@ namespace Cinema {
             throw new Exception("Order has already been cancelled.");
         }
 
-        public void EditOrder(Order order)
+        public void EditOrder(MovieTicket ticket)
         {
             throw new Exception("Order has been cancelled. Can not edit.");
         }

@@ -14,9 +14,9 @@ namespace Cinema
             _order.SetState(_order._orderCancelledState);
         }
 
-        public void EditOrder(Order order)
+        public void EditOrder(MovieTicket ticket)
         {
-            _order = order;
+            _order.AddSeatReservation(ticket);
         }
 
         public void PayOrder()
