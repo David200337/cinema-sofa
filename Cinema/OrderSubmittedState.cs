@@ -2,7 +2,7 @@ namespace Cinema
 {
     public class OrderSubmittedState : IOrderState
     {
-        private readonly Order _order;
+        private Order _order;
 
         public OrderSubmittedState(Order order)
         {
@@ -11,22 +11,22 @@ namespace Cinema
 
         public void CancelOrder()
         {
-            throw new NotImplementedException();
+            _order.SetState(_order._orderCancelledState);
         }
 
-        public void EditOrder()
+        public void EditOrder(Order order)
         {
-            throw new NotImplementedException();
+            _order = order;
         }
 
         public void PayOrder()
         {
-            throw new NotImplementedException();
+            _order.SetState(_order._orderPaidState);
         }
 
         public void SubmitOrder()
         {
-            throw new NotImplementedException();
+            throw new Exception("Order has already been submitted. Can not submit.");
         }
     }
 }

@@ -1,7 +1,7 @@
 namespace Cinema {
     public class OrderPaidState : IOrderState
     {
-        private readonly Order _order;
+        private Order _order;
 
         public OrderPaidState(Order order)
         {
@@ -10,22 +10,22 @@ namespace Cinema {
 
         public void CancelOrder()
         {
-            throw new NotImplementedException();
+            throw new Exception("Order has already been paid for. Can not cancel.");
         }
 
-        public void EditOrder()
+        public void EditOrder(Order order)
         {
-            throw new NotImplementedException();
+            throw new Exception("Order has already been paid for. Can not edit.");
         }
 
         public void PayOrder()
         {
-            throw new NotImplementedException();
+            throw new Exception("Order has already been paid for.");
         }
 
         public void SubmitOrder()
         {
-            throw new NotImplementedException();
+            throw new Exception("Order has already been submitted and paid for. Can not submit.");
         }
     }
 }

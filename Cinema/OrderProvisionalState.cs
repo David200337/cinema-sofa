@@ -1,17 +1,17 @@
 namespace Cinema
 {
-    public class OrderUnsubmittedState : IOrderState
+    public class OrderProvisionalState : IOrderState
     {
         private Order _order;
 
-        public OrderUnsubmittedState(Order order)
+        public OrderProvisionalState(Order order)
         {
             _order = order;
         }
 
         public void CancelOrder()
         {
-            throw new Exception("Order has not been submitted yet.");
+            _order.SetState(_order._orderCancelledState);
         }
 
         public void EditOrder(Order order)
@@ -21,12 +21,12 @@ namespace Cinema
 
         public void PayOrder()
         {
-            throw new Exception("Order has not been submitted yet.");
+            _order.SetState(_order._orderPaidState);
         }
 
         public void SubmitOrder()
         {
-            _order.SetState(_order._orderSubmittedState);
+            throw new Exception("Order has already been submitted. Can not submit.");
         }
     }
 }
