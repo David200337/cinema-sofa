@@ -11,7 +11,7 @@ public class OrderTests
     [DataRow(10.00, false, true, true, 6, 30.00)]
     [DataRow(10.00, false, false, true, 6, 54.00)]
     [DataRow(10.00, false, false, false, 3, 20.00)]
-    public void Order_Price_Is_Correctly_Calculated(double baseTicketPrice, bool isPremiumTicket, bool isStudentTicket, bool isWeekend, int amountOfTickets, double expectedOrderPrice)
+    public void Order_Price_Should_Be_Correctly_Calculated(double baseTicketPrice, bool isPremiumTicket, bool isStudentTicket, bool isWeekend, int amountOfTickets, double expectedOrderPrice)
     {
         // Arrange
         DateTime today = DateTime.Now.Date;
@@ -40,8 +40,8 @@ public class OrderTests
     }
 
     [TestMethod]
-    public void Order_Should_Be_Able_To_Be_Submitted() 
-    {  
+    public void Order_Should_Be_Able_To_Be_Submitted()
+    {
         // Arrange
         Order order = new(1, true);
 
@@ -215,7 +215,7 @@ public class OrderTests
     [DataRow(10.00, false, true, true, 6, 30.00)]
     [DataRow(10.00, false, false, true, 6, 54.00)]
     [DataRow(10.00, false, false, false, 3, 20.00)]
-    [ExpectedException(typeof(InvalidOperationException),"Order has not been paid for.")]
+    [ExpectedException(typeof(InvalidOperationException), "Order has not been paid for.")]
     public void Order_Should_Not_Be_Able_To_Be_Editted_When_Paid_State(double baseTicketPrice, bool isPremiumTicket, bool isStudentTicket, bool isWeekend, int amountOfTickets, double expectedOrderPrice)
     {
         // Arrange
